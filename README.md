@@ -10,15 +10,14 @@ git clone https://github.com/<YOUR_USERNAME>/weather-app.git
 
 Build the Docker images:
 
-docker build -t city-to-zip:v1 -f city_to_zip/Dockerfile city_to_zip/
-docker build -t zip-to-weather:v1 -f zip_to_weather/Dockerfile zip_to_weather/
+docker build -t image1 :v1 -f image1/Dockerfile city_to_zip/
+docker build -t image2 :v1 -f image2/Dockerfile zip_to_weather/
 
 Create and start the containers:
 
-docker run -d -p 5000:5000 --name city-to-zip city-to-zip:v1
-docker run -d -p 5001:5000 --name zip-to-weather zip-to-weather:v1
+docker run --name image1-container1 -p image1:v1
+docker run --name image2-container2 -p image2:v1
 
 Test the application:
 
-curl http://localhost:5000/zip_code?city=San Francisco
-curl http://localhost:5001/weather?zip=94103
+http://192.168.1.93:5000/weather?zipcode=94621
